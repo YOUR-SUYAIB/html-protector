@@ -1,0 +1,468 @@
+        :root {
+            --primary-color: #7367f0;
+            --secondary-color: #82868b;
+            --success-color: #28c76f;
+            --danger-color: #ea5455;
+            --warning-color: #ff9f43;
+            --info-color: #00cfe8;
+            --dark-color: #4b4b4b;
+            --light-color: #f8f8f8;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f5f5;
+            color: #6e6b7b;
+        }
+        
+        .app-brand {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .app-brand-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .app-brand-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #6e6b7b;
+        }
+        
+        .sidebar {
+            width: 260px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            background: white;
+            box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-menu {
+            padding: 0;
+            list-style: none;
+        }
+        
+        .sidebar-menu .menu-item {
+            margin-bottom: 5px;
+        }
+        
+        .sidebar-menu .menu-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            color: #6e6b7b;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-menu .menu-link:hover, 
+        .sidebar-menu .menu-item.active .menu-link {
+            background-color: rgba(115, 103, 240, 0.08);
+            color: var(--primary-color);
+        }
+        
+        .sidebar-menu .menu-icon {
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+        }
+        
+        .main-content {
+            margin-left: 260px;
+            padding: 2rem;
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);
+            margin-bottom: 2rem;
+            background: white;
+        }
+        
+        .card-header {
+            background: transparent;
+            border-bottom: 1px solid #ebe9f1;
+            padding: 1.5rem;
+        }
+        
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .form-control, .form-select {
+            border: 1px solid #d8d6de;
+            border-radius: 0.375rem;
+            padding: 0.75rem 1rem;
+            height: calc(1.5em + 1.5rem + 2px);
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 3px 10px 0 rgba(115, 103, 240, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 200px;
+            height: auto;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            border-radius: 0.375rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #5e50ee;
+            border-color: #5e50ee;
+        }
+        
+        .btn-success {
+            background-color: var(--success-color);
+            border-color: var(--success-color);
+        }
+        
+        .btn-info {
+            background-color: var(--info-color);
+            border-color: var(--info-color);
+        }
+        
+        .btn-warning {
+            background-color: var(--warning-color);
+            border-color: var(--warning-color);
+        }
+        
+        .preview-frame {
+            border: 1px solid #d8d6de;
+            border-radius: 0.375rem;
+            width: 100%;
+            height: 250px;
+            background: white;
+        }
+        
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+        }
+        
+        .progress-container {
+            width: 80%;
+            max-width: 500px;
+            background-color: #f1f1f1;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+        
+        .progress-bar {
+            height: 20px;
+            border-radius: 20px;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+            text-align: center;
+            color: white;
+            font-size: 12px;
+            line-height: 20px;
+        }
+        
+        /* Animation 1: Dot Spinner */
+        .dot-spinner {
+            --uib-size: 40px;
+            --uib-color: #7367f0;
+            --uib-speed: 1.5s;
+            --dot-size: calc(var(--uib-size) * 0.17);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            height: var(--uib-size);
+            width: var(--uib-size);
+            animation: smoothRotate calc(var(--uib-speed) * 1.8) linear infinite;
+        }
+
+        .dot-spinner .dot {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            animation: rotate var(--uib-speed) ease-in-out infinite;
+        }
+
+        .dot-spinner .dot::before {
+            content: '';
+            height: var(--dot-size);
+            width: var(--dot-size);
+            border-radius: 50%;
+            background-color: var(--uib-color);
+            transition: background-color 0.3s ease;
+        }
+
+        .dot-spinner .dot:nth-child(2),
+        .dot-spinner .dot:nth-child(2)::before {
+            animation-delay: calc(var(--uib-speed) * -0.835 * 0.5);
+        }
+
+        .dot-spinner .dot:nth-child(3),
+        .dot-spinner .dot:nth-child(3)::before {
+            animation-delay: calc(var(--uib-speed) * -0.668 * 0.5);
+        }
+
+        .dot-spinner .dot:nth-child(4),
+        .dot-spinner .dot:nth-child(4)::before {
+            animation-delay: calc(var(--uib-speed) * -0.501 * 0.5);
+        }
+
+        .dot-spinner .dot:nth-child(5),
+        .dot-spinner .dot:nth-child(5)::before {
+            animation-delay: calc(var(--uib-speed) * -0.334 * 0.5);
+        }
+
+        .dot-spinner .dot:nth-child(6),
+        .dot-spinner .dot:nth-child(6)::before {
+            animation-delay: calc(var(--uib-speed) * -0.167 * 0.5);
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            65%,
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes smoothRotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Animation 2: Color Rings */
+        .color-rings-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .color-rings-loading-text {
+            color: #7367f0;
+            position: relative;
+            z-index: 10;
+            font-weight: 500;
+        }
+
+        .color-ring {
+            width: 190px;
+            height: 190px;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            position: absolute;
+            transform-origin: 50% 50%;
+        }
+
+        .color-ring:nth-child(1) {
+            border-bottom: 8px solid #7367f0;
+            animation: rotate1 2s linear infinite;
+        }
+
+        @keyframes rotate1 {
+            from { transform: rotateX(50deg) rotateZ(110deg); }
+            to { transform: rotateX(50deg) rotateZ(470deg); }
+        }
+
+        .color-ring:nth-child(2) {
+            border-bottom: 8px solid #28c76f;
+            animation: rotate2 2s linear infinite;
+        }
+
+        @keyframes rotate2 {
+            from { transform: rotateX(20deg) rotateY(50deg) rotateZ(20deg); }
+            to { transform: rotateX(20deg) rotateY(50deg) rotateZ(380deg); }
+        }
+
+        .color-ring:nth-child(3) {
+            border-bottom: 8px solid #00cfe8;
+            animation: rotate3 2s linear infinite;
+        }
+
+        @keyframes rotate3 {
+            from { transform: rotateX(40deg) rotateY(130deg) rotateZ(450deg); }
+            to { transform: rotateX(40deg) rotateY(130deg) rotateZ(90deg); }
+        }
+
+        .color-ring:nth-child(4) {
+            border-bottom: 8px solid #ff9f43;
+            animation: rotate4 2s linear infinite;
+        }
+
+        @keyframes rotate4 {
+            from { transform: rotateX(70deg) rotateZ(270deg); }
+            to { transform: rotateX(70deg) rotateZ(630deg); }
+        }
+        
+        /* Animation 3: Bouncing Dots */
+        .bouncing-dots-loader {
+            width: 40px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: #7367f0;
+            animation: bounce-dots 1.5s ease-in-out infinite;
+        }
+
+        @keyframes bounce-dots {
+            0%, 100% {
+                transform: translate(-60px);
+                box-shadow: 0 0 #ff9f43, 0 0 #00cfe8;
+            }
+            25% {
+                transform: translate(60px);
+                box-shadow: -25px 0 #ff9f43, -70px 0 #00cfe8;
+            }
+            50% {
+                transform: translate(60px);
+                box-shadow: 0 0 #ff9f43, 0 0 #00cfe8;
+            }
+            75% {
+                transform: translate(-35px);
+                box-shadow: 25px 0 #ff9f43, 70px 0 #00cfe8;
+            }
+        }
+        
+        /* Animation 4: Double Ring Spinner */
+        .double-ring-loader {
+            width: 60px;
+            aspect-ratio: 1;
+            display: grid;
+            border: 5px solid transparent;
+            border-radius: 50%;
+            border-color: #ccc transparent;
+            animation: spin 1s linear infinite;
+            position: relative;
+        }
+
+        .double-ring-loader::before,
+        .double-ring-loader::after {
+            content: "";
+            grid-area: 1 / 1;
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 5px solid transparent;
+            border-radius: 50%;
+        }
+
+        .double-ring-loader::before {
+            margin: 3px;
+            border-color: #7367f0 transparent;
+            animation: spin 0.5s linear infinite reverse;
+        }
+
+        .double-ring-loader::after {
+            margin: 10px;
+            border-color: #82868b transparent;
+            border-width: 5px;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Animation 5: Dot Circle */
+        .dot-circle-loader {
+            width: 33px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: #7367f0;
+            animation: dot-circle 1.5s infinite linear;
+        }
+
+        @keyframes dot-circle {
+            0%    {box-shadow: 
+                    0 -45px #ff9f43, calc(45px*0.707) calc(-45px*0.707) #00cfe8, 45px 0 #ff9f43, 0 0 #00cfe8,
+                    0 0 #ff9f43, 0 0 #00cfe8, 0 0 #ff9f43, 0 0 #00cfe8}
+            12.5% {box-shadow: 
+                    0 0 #ff9f43, calc(45px*0.707) calc(-45px*0.707) #00cfe8, 45px 0 #ff9f43, calc(45px*0.707) calc(45px*0.707) #00cfe8,
+                    0 0 #ff9f43, 0 0 #00cfe8, 0 0 #ff9f43, 0 0 #00cfe8}
+            25%   {box-shadow: 
+                    0 0 #ff9f43, 0 0 #00cfe8, 45px 0 #ff9f43, calc(45px*0.707) calc(45px*0.707) #00cfe8,
+                    0 45px #ff9f43, 0 0 #00cfe8, 0 0 #ff9f43, 0 0 #00cfe8}
+            37.5% {box-shadow: 
+                    0 0 #ff9f43, 0 0 #00cfe8, 0 0 #ff9f43, calc(45px*0.707) calc(45px*0.707) #00cfe8,
+                    0 45px #ff9f43, calc(-45px*0.707) calc(45px*0.707) #00cfe8, 0 0 #ff9f43, 0 0 #00cfe8}
+            50%   {box-shadow: 
+                    0 0 #ff9f43, 0 0 #00cfe8, 0 0 #ff9f43, 0 0 #00cfe8,
+                    0 45px #ff9f43, calc(-45px*0.707) calc(45px*0.707) #00cfe8, -45px 0 #ff9f43, 0 0 #00cfe8}
+            62.5% {box-shadow: 
+                    0 0 #ff9f43, 0 0 #00cfe8, 0 0 #ff9f43, 0 0 #00cfe8,
+                    0 0 #ff9f43, calc(-45px*0.707) calc(45px*0.707) #00cfe8, -45px 0 #ff9f43, calc(-45px*0.707) calc(-45px*0.707) #00cfe8}
+            75%   {box-shadow: 
+                    0 -45px #ff9f43, 0 0 #00cfe8, 0 0 #ff9f43, 0 0 #00cfe8,
+                    0 0 #ff9f43, 0 0 #00cfe8, -45px 0 #ff9f43, calc(-45px*0.707) calc(-45px*0.707) #00cfe8}
+            87.5% {box-shadow: 
+                    0 -45px #ff9f43, calc(45px*0.707) calc(-45px*0.707) #00cfe8, 0 0 #ff9f43, 0 0 #00cfe8,
+                    0 0 #ff9f43, 0 0 #00cfe8, 0 0 #ff9f43, calc(-45px*0.707) calc(-45px*0.707) #00cfe8}
+            100%  {box-shadow: 
+                    0 -45px #ff9f43, calc(45px*0.707) calc(-45px*0.707) #00cfe8, 45px 0 #ff9f43, 0 0 #00cfe8,
+                    0 0 #ff9f43, 0 0 #00cfe8, 0 0 #ff9f43, 0 0 #00cfe8}
+        }
+        
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.show {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+        }
